@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 font-sans antialiased;
+  }
+}
+
+@media print {
+  body {
+    background: white !important;
+  }
+  
+  /* Hide UI elements */
+  nav, button, div.no-print, input, textarea, select {
+    display: none !important;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+  
+  #thermal-receipt, #thermal-receipt * {
+    visibility: visible;
+  }
+  
+  #thermal-receipt {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 80mm; /* Standard thermal width */
+    margin: 0;
+    padding: 0;
+    box-shadow: none !important;
+    border: none !important;
+  }
+  
+  @page {
+    margin: 0;
+    size: 80mm auto;
+  }
+}
